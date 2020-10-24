@@ -773,48 +773,678 @@ _,b = input(), set(map(int,input().split()))
 print(len(list(a|b)))
 
 
-#
+# Piling Up!
 
+N = int(input())
 
-
-#
-
-
-
-
-#
-
-
-
-#
-
-
-
-#
-
-
-
-#
-
-
-
-
-#
-
-
-
-#
-
-
-
-
-#
-
-
-
-#
+for i in range(0,N): 
+    _ = input()
+    L = list(map(int,input().split()))
+    x = L.index(min(L))
  
+    L1 = sorted(L[x:])
+    L2 = sorted(L[:x], reverse=True)
+    
+    if L1 == L[x:] and L2 == L[:x] : 
+        print ('Yes')
+    else :
+        print('No')
+
+
+# Set .intersection() Operation
+
+
+
+_,a = input(), set(map(int,input().split()))
+_,b = input(), set(map(int,input().split()))
+
+print(len(list(a&b)))
+
+
+
+# Set .difference() Operation
+
+
+
+_,a = input(), set(map(int,input().split()))
+_,b = input(), set(map(int,input().split()))
+
+print(len(list(a-b)))
+
+
+
+# Set .symmetric_difference() Operation
+
+
+_,a = input(), set(map(int,input().split()))
+_,b = input(), set(map(int,input().split()))
+
+print(len(list(a^b)))
+
+
+
+# Set Mutations
+
+_ = input()
+A = set(map(int, input().split()))
+N = int(input())
+
+for i in range(0,N):
+    attr = input().split()
+    H = set(map(int, input().split()))
+    getattr(A, attr[0])(H)
+
+print(sum(list(A)))
+
+
+# The Captain's Room
+
+
+
+from collections import Counter
+
+_, L = input(), list(map(int, input().split()))
+A = Counter(L)
+
+for x,y in A.items():
+    if y == 1:
+        print(x)
+
+
+
+# Check Subset
+
+
+n = int(input())
+L = [0]*(n)
+M = [0]* (n)
+i = 0
+while i < n : 
+
+    _, L[i] = input(), set(map(int, input().split()))
+    _, M[i] = input(), set(map(int, input().split()))
+    print (L[i] < M[i])
+    i = i + 1 
+
+
+# Check Strict Superset
+
+
+A = set(map(int, input().split()))
+n = int(input())
+i = 0 
+
+while i < n : 
+    B = set(map(int, input().split()))
+    if not(B < A) : 
+        print("False")
+        exit()
+    i = i + 1 
+
+print ("True")
+
+
+
+
+# Zipped!
+
+
+L = list(map(int,input().split()))
+K = []
+
+for i in range(0,L[1]):
+    G = list(map(float,input().split()))
+    K.append(G)
+
+for x in zip(*K):
+    print (sum(x)/len(x))
+
+
+
+# Athlete Sort
+ 
+import math
+import os
+import random
+import re
+import sys
+import operator
+
+
+if __name__ == '__main__':
+    nm = input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    k = int(input())
+
+arr.sort(key=operator.itemgetter(k))
+
+for x in arr:
+    print(*x)
+
+
+# ginortS
+
+
+txt = input()
+L = [] 
+
+for i in range(0,len(txt)):
+    if txt[i].islower():
+       a = '0'+txt[i]
+       L.append(a)
+    
+    if txt[i].isupper():
+        a = '1' + txt[i]
+        L.append(a)
+    
+    if txt[i].isdigit():
+        if int(txt[i])%2:
+            a = '2' + txt[i]
+            L.append(a)
+        else : 
+            a = '3' +txt[i]
+            L.append(a)
+
+L.sort()
+
+for x in L: 
+    print (x[1:], end='')
+
+
+    
+
     
     
 
+# Detect Floating Point Number
+
+import re 
+
+n = int(input())
+
+for i in range(0,n):
+    txt = input()
+    m = re.match('^([+\-.]{0,1})\d{0,}\.\d+$' , txt)
+    if m:
+        print('True')
+    else:
+        print('False')
+
+
+
+
+
+# Map and Lambda Function   
+    
+
+def fibonacci(n):
+    # return a list of fibonacci numbers
+    L = [0,1]
+    if n == 0: 
+        return []
+    if n == 1 : 
+        return [0]
+    if n == 2 :
+        return L
+    i = 2 
+    while i < n :
+        L.append(L[i-1] + L[i-2])
+        i = i +1 
+    return L          
+
+
+
+    
+    
+
+# Re.split()
+
+
+regex_pattern = r"[. ,]"
+
+import re
+print("\n".join(re.split(regex_pattern, input())))
+
+
+
+# Re.findall() & Re.finditer()
+
+
+import re
+
+c_list = re.findall('(?<=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm])[AEIOUaeiou]{2,99}(?=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm])', input())
+
+
+if not c_list : 
+    print (-1)
+else: 
+    for x in c_list:
+       print(x)
+
+    
+    
+
+    
+    
+
+# Re.start() & Re.end()
+
+import re 
+txt1= input()
+a = input()
+txt2 = re.compile(a)
+j = 0
+
+if not re.search(txt2, txt1) : print ((-1,-1))
+
+if len(a) == 1 : 
+    while True : 
+        m = re.search(txt2, txt1[j:])
+        if not m : break 
+        print((m.start()+j, m.end()-1+j))
+        j = m.end()+1+j  
+
+else :
+    while True : 
+        m = re.search(txt2, txt1[j:])
+        if not m : break 
+        print((m.start()+j, m.end()-1+j))
+        j = m.end()-1+j 
+
+
+
+
+
+
+# Validating phone numbers 
+
+
+import re 
+
+n = int(input())
+
+for i in range(0,n):
+    txt = input()
+    h = len(txt)
+    if not h == 10: 
+        print('NO')
+        continue 
+    if re.match('[7-9]', txt) : 
+        if re.search('[0-9]{9}', txt[1:]):
+            print('YES')
+        else :
+            print('NO')
+    else: 
+        print('NO')
+
+
+    
+    
+
+# Validating and Parsing Email Addresses
+
+
+import re 
+n = int (input())
+for i in range(0,n):     
+    txt = list(input().split()) 
+    m = re.match ('^([A-Za-z])([a-zA-Z.\-_0-9]+)@([a-zA-Z]+)\.([a-zA-Z]{1,3})$', txt[1][1:-1])
+    if m :
+        print (*txt)
+
+
+
+# HTML Parser - Part 1
+
+  
+    
+
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    
+    def handle_starttag(self, tag, attrs):
+        print ("Start :", tag)
+        for i in range(0, len(attrs)):
+            print ('->', attrs[i][0], end='')
+            print(' >', attrs[i][1])
+
+    def handle_endtag(self, tag):
+        print ("End   :", tag)
+    
+    def handle_startendtag(self, tag, attrs):
+        print ("Empty :", tag)
+        for i in range(0, len(attrs)):
+            print ('->', attrs[i][0], end='')
+            print(' >', attrs[i][1])
+
+
+n = int(input())
+parser = MyHTMLParser()
+txt = ''
+
+for i in range(0,n):
+    txt = txt + input()
+    
+parser.feed(txt)
+
+    
+    
+
+# HTML Parser - Part 2
+
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    
+    def handle_comment(self, data):
+        L = data.split('\n')
+        if len(L) > 1: 
+            print('>>> Multi-line Comment')
+            for i in range(0,len(L)):
+                print(L[i])
+        else: 
+            print('>>> Single-line Comment')
+            print(data)
+
+    def handle_data(self, data):
+        if  data != '\n' : 
+            print('>>> Data')
+            print(data)
+
+  
+  
+  
+  
+  
+  
+  
+  
+html = ""       
+for i in range(int(input())):
+    html += input().rstrip()
+    html += '\n'
+    
+parser = MyHTMLParser()
+parser.feed(html)
+parser.close()
+
+
+
+#   Detect HTML Tags, Attributes and Attribute Values
+
+
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    
+    def handle_starttag(self, tag, attrs):
+        print ('', tag, sep='')
+        for i in range(0, len(attrs)):
+            print ('->', attrs[i][0], end='')
+            print(' >', attrs[i][1])
+
+    def handle_endtag(self, tag):
+        x = tag
+    
+    def handle_startendtag(self, tag, attrs):
+        print ("", tag, sep='')
+        for i in range(0, len(attrs)):
+            print ('->', attrs[i][0], end='')
+            print(' >', attrs[i][1])
+
+
+n = int(input())
+parser = MyHTMLParser()
+txt = ''
+
+for i in range(0,n):
+    txt = txt + input()
+    
+parser.feed(txt)
+
+    
+
+
+    
+    
+
+# XML 1 - Find the Score
+
+import sys
+import xml.etree.ElementTree as etree
+
+def get_attr_number(node):
+   
+    x = len(node.attrib)
+    n = count_attr (node, [x])
+    return n 
+
+def count_attr (node, L):
+
+    if node == None : return 0
+
+    for child in node: 
+        count_attr(child, L)
+        L.append(len(child.attrib))
+
+    return (sum(L)) 
+    
+    
+
+if __name__ == '__main__':
+    sys.stdin.readline()
+    xml = sys.stdin.read()
+    tree = etree.ElementTree(etree.fromstring(xml))
+    root = tree.getroot()
+    print(get_attr_number(root))
+
+
+
+
+
+#   XML2 - Find the Maximum Depth
+    
+
+import xml.etree.ElementTree as etree
+    
+    
+maxdepth = 0
+def depth(elem, level):
+    global maxdepth
+    
+    x = count_levels (elem, [0])
+    maxdepth = x 
+
+def count_levels (node, L): 
+
+    if list(node) == [] :
+        return 0 
+    else : 
+       L[0] = L[0] + 1 
+
+
+    for child in node: 
+       count_levels(child, L)
+        
+    
+    L.insert(0,1)
+    
+    return(max(L))
+    
+    
+if __name__ == '__main__':
+    n = int(input())
+    xml = ""
+    for i in range(n):
+        xml =  xml + input() + "\n"
+    tree = etree.ElementTree(etree.fromstring(xml))
+    depth(tree.getroot(), -1)
+    print(maxdepth)
+    
+    
+
+# Standardize Mobile Number Using Decorators
+
+def wrapper(f):
+    def fun(l):
+        
+        g = []
+        for x in l:
+            x = x[len(x)-10:]
+            x = '+91' + ' ' + x[0:5] + ' ' + x[5: ]
+            g.append(x)
+        f(g)
+        
+
+    return fun
+
+@wrapper
+def sort_phone(l):
+    print(*sorted(l), sep='\n')
+
+if __name__ == '__main__':
+    l = [input() for _ in range(int(input()))]
+    sort_phone(l) 
+
+
+
+#   Decorators 2 - Name Directory
+import operator 
+
+def person_lister(f):
+    def inner(people):
+        for i in range(0,len(people)):
+            people[i][2] = int(people[i][2])
+        L = sorted(people, key=operator.itemgetter(2))
+        return map(f, L)
+    return inner
+
+
+    
+@person_lister
+def name_format(person):
+    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+
+if __name__ == '__main__':
+    people = [input().split() for i in range(int(input()))]
+    print(*name_format(people), sep='\n')
+    
+    
+
+# Arrays
+import numpy
+
+def arrays(arr):
+   
+    arr.reverse()
+    a = numpy.array(arr,float) 
+    return a 
+
+
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
+
+
+
+# Shape and Reshape
+import numpy  
+
+
+L = list(map(int,input().split()))
+arr = numpy.array(L)
+print (numpy.reshape(arr,(3,3)))
+
+    
+    
+
+# Transpose and Flatten
+
+import numpy
+
+P = list(map(int,input().split()))
+Q = []
+
+
+for i in range(0,P[0]):
+    L = list(map(int,input().split()))
+    Q.append(L)
+
+arr = numpy.array(Q)
+
+print (numpy.transpose(Q))
+print (arr.flatten())
+
+
+
+#   
+    
+
+    
+    
+
+#
+
+
+
+
+#   
+    
+
+    
+    
+
+#
+
+
+
+
+#   
+    
+
+    
+    
+
+#
+
+
+
+
+#   
+    
+
+    
+    
+
+#
+
+
+
+
+#   
+    
+
+    
+    
+
+#
+
+
+
+
+#   
+    
+
+    
+    
 
