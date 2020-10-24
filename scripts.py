@@ -1819,7 +1819,35 @@ if __name__ == '__main__':
 
     fptr.close()
 
+# The Minion Game
+import re 
 
+def minion_game(string):
+    # your code goes here
+    vocals = 'AEIOU'
+    consonants = 'BCDFGHJKLMNPQRSTVWXZY'
+    sumK = 0 
+    sumS = 0 
+    for x in vocals:
+        indexes = re.finditer(x, string)
+        for q in indexes: 
+            sumK = sumK + len(string)-q.start()
+    for x in consonants:
+        indexes = re.finditer(x, string)
+        for q in indexes: 
+            sumS = sumS + len(string)-q.start()
+    
+    if sumS > sumK:
+        print ('Stuart', sumS)
+    if sumK > sumS:
+        print('Kevin', sumK)
+    if sumK == sumS:
+        print('Draw')
+        
+
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)
 
 
     
