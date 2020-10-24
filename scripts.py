@@ -337,7 +337,7 @@ while True :
 # Text Alignment
  
 
-thickness = int(input()) #This must be an odd number
+thickness = int(input()) 
 c = 'H'
 
 for i in range(thickness):
@@ -415,7 +415,6 @@ while j >= 0 :
 
 
 
-#
 
 
 
@@ -440,7 +439,7 @@ def central_pattern(size, j):
                 print('-', end='')
         
 def print_rangoli(size):
-    # your code goes here
+   
     for j in range(1,size):
         lateral_pattern(size, j)
         central_pattern (size, j)
@@ -475,7 +474,7 @@ def solve(s):
 from collections import OrderedDict
 
 def merge_the_tools(string, k):
-    # your code goes here
+    
     L = []
     i = 0 
     x = k  
@@ -515,7 +514,7 @@ print (x)
 # Introduction to Sets
 
 def average(array):
-    # your code goes here
+   
     S = list(set(array))
     Result = sum(S) / len(S)
     
@@ -987,7 +986,7 @@ for i in range(0,n):
     
 
 def fibonacci(n):
-    # return a list of fibonacci numbers
+    
     L = [0,1]
     if n == 0: 
         return []
