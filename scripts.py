@@ -374,6 +374,447 @@ def wrap(string, max_width):
         x = x + max_width 
 
     return string[max_width*cont:]
+
+
+
+# Designer Door Mat
+
+def central_pattern (n):
+    for i in range (0,2*n+1):
+        print ('.|.', end='')
+    return 
+
+def lateral_pattern (n): 
+    for i in range(0,n):
+        print ('-', end='')
+    return 
+
+L = list(map(int, input().split()))
+j = 0
+
+while j <= L[0]//2 - 1 :
+    lateral_pattern ((L[1]//2-1) - 3*j)
+    central_pattern(j)
+    lateral_pattern ((L[1]//2-1) - 3*j)
+    print()
+    j = j+1
+
+lateral_pattern ((L[1]-7)//2) 
+print ("WELCOME", end='')
+lateral_pattern ((L[1]-7)//2) 
+print()
+j = j-1
+
+while j >= 0 :
+    lateral_pattern ((L[1]//2-1) - 3*j)
+    central_pattern(j)
+    lateral_pattern ((L[1]//2-1) - 3*j)
+    print()
+    j = j-1
+
+
+
+
+#
+
+
+
+
+# Alphabet Rangoli
+
+def lateral_pattern(size, j):
+        for i in range(0, 2*size-2*j):
+            print('-', end='')
+
+def central_pattern(size, j):
+    if j == 1: print (chr(97+size-1), end='')
+    else :
+        for i in range(0,j):
+            print (chr(97+size-(1+i)), end='')
+            print('-', end='')
+        for i in range(j-2,-1,-1):
+            if i == 0 : 
+                print (chr(97+size-(1+i)), end='')
+            else :
+                print (chr(97+size-(1+i)), end='')
+                print('-', end='')
+        
+def print_rangoli(size):
+    # your code goes here
+    for j in range(1,size):
+        lateral_pattern(size, j)
+        central_pattern (size, j)
+        lateral_pattern(size,j)
+        print()
+    central_pattern(size,size)
+    print()
+    for j in range(size-1,0,-1):
+        lateral_pattern(size, j)
+        central_pattern (size, j)
+        lateral_pattern(size,j)
+        print()
+
+
+# Capitalize!
+
+def solve(s):
+    L = s.split(" ")
+    d = L[0].capitalize()
+    i = 1
+    while i<len(L) : 
+        d = d + ' ' 
+        d = d + L[i].capitalize()
+        i = i + 1 
+    
+    return d
+
+
+
+# Merge the Tools!
+
+from collections import OrderedDict
+
+def merge_the_tools(string, k):
+    # your code goes here
+    L = []
+    i = 0 
+    x = k  
+    while k <= len(string):
+        L.append(string[i:k])
+        i = k 
+        k = k+x
+
+    for i in range(0, len(L)):
+        A = OrderedDict.fromkeys(L[i])
+        st = ''.join(A.keys())
+        print(st)
+
+
+
+# collections.Counter()
+
+from collections import Counter
+
+n = int(input())
+L = list(map(int, input().split()))
+C = Counter(L)
+x = 0 
+
+for i in range(0,int(input())): 
+    L = list(map(int,input().split()))
+    if L[0] in C and C[L[0]] > 0 :
+        C[L[0]] = C[L[0]]-1
+        x = x + L[1]
+    else : 
+        continue 
+print (x)
+
+
+
+
+# Introduction to Sets
+
+def average(array):
+    # your code goes here
+    S = list(set(array))
+    Result = sum(S) / len(S)
+    
+    return Result
+
+
+
+
+# DefaultDict Tutorial
+
+from collections import defaultdict
+
+L = list(map(int, input().split()))
+a = defaultdict(list)
+Q = []
+
+for i in range(1,L[0]+1):
+   a[input()].append(str(i))
+
+for i in range(1,L[1]+1):
+    Q.append(input())
+
+for x in Q:
+    if x in a.keys(): 
+        print(*a[x])
+    else : 
+        print(-1)
+    
+
+
+
+
+
+# Calendar Module
+
+import calendar 
+
+L = list(map(int,input().split()))
+T = ('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY')
+print (T[calendar.weekday(L[2],L[0],L[1])])
+
+
+
+# Exceptions
+
+
+n = int(input())
+
+for i in range(0,n):
+    try:
+        L = list(map(int,input().split()))
+        print (L[0]//L[1])
+    except ZeroDivisionError as e:
+        print ("Error Code:",e)
+    except ValueError as e:
+        print ("Error Code:",e) 
+
+
+
+
+
+# Collections.namedtuple()
+
+from collections import namedtuple
+n = int(input())
+L = input().split()
+table = namedtuple('table', L)
+x = 0 
+
+for i in range (0,n):
+    student = table(*input().split())
+    x = x + int(student.MARKS)
+
+print ('%.2f' % (x / n) )
+
+
+
+
+
+# No Idea!
+
+n, m = input().split()
+
+sc_ar = input().split()
+
+A = set(input().split())
+B = set(input().split())
+print (sum([(i in A) - (i in B) for i in sc_ar]))
+
+
+
+# Collections.OrderedDict()
+
+from collections import OrderedDict
+
+n = int(input())
+d = OrderedDict()
+
+for i in range(0,n):
+    L = input().split()
+    word = " ".join(word for word in L[:-1])
+
+    if word in d: 
+        d[word] = int(L[-1]) + int(d[word])
+    else :
+        d [word] = int(L[-1])
+
+for x in d.keys():
+    print ("%s %s" %(x, d[x]) )
+
+
+
+
+# Symmetric Difference
+
+
+n, A = input(), set(input().split())
+
+m, B = input(), set(input().split())
+
+
+
+L1 = [int(x) for x in list(A.difference(B))]
+L2 = [int(x) for x in list(B.difference(A))]
+
+L1 = L1 + L2 
+L1.sort()
+
+i = 0 
+while i<len(L1) : 
+    print (L1[i])
+    i = i+1
+
+
+
+
+
+
+# Set .add()
+
+
+n = int(input())
+
+s = set()
+
+i = 0 
+
+while i < n : 
+    s.add(input())
+    i = i+1
+
+print (len(list(s)))     
+
+
+
+
+
+# Word Order
+
+from collections import OrderedDict 
+
+n = int(input())
+d = OrderedDict()
+
+for i in range(0,n):
+    word = input()
+    if word in d : 
+        d[word] = d[word] + 1 
+    else :
+        d [word] = 1 
+
+print (len(d.keys()))
+print (*d.values())
+
+
+
+
+
+# Set .discard(), .remove() & .pop()
+
+n = int(input())
+s = set(map(int, input().split()))
+
+c = int(input())
+i = 0
+
+while i < c : 
+    a = input()
+
+    if a[0] == 'p' : 
+        s.pop()   
+    if a[0] == 'r' :
+        s.remove(int(a[7]))
+    if a[0] == 'd' :
+        s.discard(int(a[8]))
+    
+    i = i+1 
+
+print(sum(list(s)))
+
+
+
+# Collections.deque()
+
+from collections import deque
+n = int (input())
+d = deque()
+
+for i in range(0,n):
+    L = input().split()
+    if len(L) > 1 : getattr (d, L[0]) (int(L[1]))
+    else : getattr (d, L[0]) ()
+    
+print (*d)
+
+
+
+
+
+# Company Logo
+
+
+import math
+import os
+import random
+import re
+import sys
+from collections import Counter
+import operator
+
+if __name__ == '__main__':
+    s = input()
+C = Counter(s) 
+L = []
+
+for key,value in C.items():
+    l = [key, int(value)]
+    L.append(l)
+
+L.sort (key=operator.itemgetter(0))
+L.sort(key = operator.itemgetter(1), reverse=True)
+
+for x in L[:3]: 
+    print(*x)
+
+
+
+
+# Set .union() Operation
+
+
+_,a = input(), set(map(int,input().split()))
+_,b = input(), set(map(int,input().split()))
+
+print(len(list(a|b)))
+
+
+#
+
+
+
+#
+
+
+
+
+#
+
+
+
+#
+
+
+
+#
+
+
+
+#
+
+
+
+
+#
+
+
+
+#
+
+
+
+
+#
+
+
+
+#
  
+    
+    
 
 
