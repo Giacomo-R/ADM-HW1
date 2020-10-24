@@ -1386,64 +1386,441 @@ print (arr.flatten())
 
 
 
-#   
-    
+# Concatenate
 
-    
-    
+import numpy
 
-#
+L = list(map(int,input().split()))
+Q = []
 
+for i in range(0,L[0]+L[1]):
+    A = list(map(int,input().split()))
+    Q. append(A)
 
+arr = numpy.array(Q)
+print(arr.reshape(L[0]+L[1], L[2]))
 
-
-#   
-    
-
-    
-    
-
-#
-
-
-
-
-#   
     
 
     
     
 
-#
+# Zeros and Ones
 
 
 
+import numpy
 
-#   
+
+T = tuple(map(int,input().split()))
+
+print(numpy.zeros(T, dtype = int))
+print(numpy.ones(T, dtype = int))
+
+
+# Eye and Identity
+  
+    
+# I added line 8 from the suggestion by @nprajilesh (in the "Discussion" section) 
+# the rest of the program is my own but w/o this suggestion i wouldn't be able to match 
+# my output w/ the output given by HackerRank
+
+import numpy
+
+L = list(map(int, input().split()))
+numpy.set_printoptions(sign=' ')
+print (numpy.eye(L[0], L[1], 0))
+    
     
 
+# Array Mathematics
+import numpy
+
+L = list(map(int, input().split()))
+Q = []
+
+for i in range(0,L[0]):
+    P = list(map(int,input().split()))
+    Q.append(P)
+arr1 = numpy.array(Q)
+
+K = []
+for i in range(0,L[0]):
+    P = list(map(int,input().split()))
+    K.append(P)
+arr2 = numpy.array(K)
+
+print (arr1 + arr2)
+print (arr1 - arr2)
+print (arr1 * arr2)
+print (arr1 // arr2)
+print (arr1 % arr2)
+print (arr1 ** arr2)
+
+
+
+
+#   Floor, Ceil and Rint
+    
+# On line 8 i reused the idea of @nprajilesh that i used in the "Eye and Identity" exercise from the NumPy section  
+
+
+
+import numpy
+
+arr = numpy.array(list(map(float,input().split())))
+numpy.set_printoptions(sign=' ')  
+print (numpy.floor(arr))
+print (numpy.ceil(arr))
+print (numpy.rint(arr))
     
     
 
-#
+# Sum and Prod
+
+import numpy
+
+
+P = list(map(int,input().split()))
+Q = []
+for i in range(0,P[0]):
+    L = list(map(int,input().split()))
+    Q.append(L)
+
+arr = numpy.array(Q)
+
+print (numpy.prod(numpy.sum(arr, 0), None)) 
 
 
 
+#   Min and Max
+    
+import numpy
 
-#   
+P = list(map(int,input().split()))
+Q = []
+for i in range(0,P[0]):
+    L = list(map(int,input().split()))
+    Q.append(L)
+
+arr = numpy.array(Q)
+
+print (numpy.max(numpy.min(arr, 1), None))
+
+    
     
 
+# Mean, Var, and Std
+
+# In line 6 i reused the suggestion used in "Eye and identity" from @nprajilesh, i also
+# used the idea from @codeharrier (and others) in line 14. Before my idea was to print 
+# in line 20 using: print ("%.11f" % (numpy.std(arr, None)) )
+# the problem w/ this is that the output given by HackerRank first uses precision .11 
+# and after uses precision .12, so my idea doesn't work  
+
+
+import numpy
+
+
+numpy.set_printoptions(sign=' ')
+P = list(map(float,input().split()))
+Q = []
+for i in range(0,int(P[0])):
+    L = list(map(float,input().split()))
+    Q.append(L)
+
+numpy.set_printoptions(legacy='1.13')
+arr = numpy.array(Q)
+
+print (numpy.mean(arr,1)) 
+print (numpy.var(arr,0))    
+print (numpy.std(arr, None))
+
+
+
+
+
+# Dot and Cross  
+    
+import numpy
+P = int(input())
+
+Q = []
+for i in range(0,P):
+    L = list(map(int,input().split()))
+    Q.append(L)
+arr1 = numpy.array(Q)
+
+K = []
+for i in range(0,P):
+    L = list(map(int,input().split()))
+    K.append(L)
+arr2 = numpy.array(K)
+
+print (numpy.dot(arr1,arr2))
+
+
     
     
 
-#
+# Inner and Outer
+
+import numpy
+
+A = numpy.array(list(map(int, input().split())))
+B = numpy.array(list(map(int, input().split())))
+
+print (numpy.inner(A,B))
+print(numpy.outer(A,B))
 
 
 
 
-#   
+
+# Polynomials
+
+  
     
+import numpy
 
-    
+A = list(map(float, input().split()))
+n = int(input()) 
+
+print (numpy.polyval(A, n))
+
+
+# Linear Algebra
+
+# In line 8 we used the same idea used in "Mean, Var, and Std" from @codeharrier 
+# and others
+
+import numpy
+
+
+P = int(input())
+numpy.set_printoptions(legacy='1.13')
+
+Q = []
+for i in range(0,P):
+    L = list(map(float,input().split()))
+    Q.append(L)
+
+arr = numpy.array(Q)
+
+print (numpy.linalg.det(arr)) 
+
+
+# Birthday Cake Candles
+
+
+import math
+import os
+import random
+import re
+import sys
+from collections import Counter
+
+def birthdayCakeCandles(candles):
+    C = Counter(candles)
+    m = max(C.keys())
+    return C[m]
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    candles_count = int(input().strip())
+
+    candles = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(candles)
+    print (result)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+# Number Line Jumps
+
+import math
+import os
+import random
+import re
+import sys
+
+def kangaroo(x1, v1, x2, v2):
+
+    if (v1 - v2) == 0 and (x1 - x2) == 0:
+        return 'YES'
+    elif v1 - v2 == 0 and x1 != x2: 
+        return 'NO'
+
+    x = (x2 - x1) / (v1 - v2)
+
+    if x.is_integer() and x >= 0:  
+        return 'YES'
+    else: 
+        return 'NO'
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    x1V1X2V2 = input().split()
+
+    x1 = int(x1V1X2V2[0])
+
+    v1 = int(x1V1X2V2[1])
+
+    x2 = int(x1V1X2V2[2])
+
+    v2 = int(x1V1X2V2[3])
+
+    result = kangaroo(x1, v1, x2, v2)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+
+
+# Viral Advertising
+
+
+import math
+import os
+import random
+import re
+import sys
+
+def viralAdvertising(n):
+    x = 5 // 2
+    sum = x  
+    for i in range(0,n-1):
+        x = 3*x // 2
+        sum = sum + x 
+    return sum 
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    result = viralAdvertising(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+# Insertion Sort - Part 1
+
+
+import math
+import os
+import random
+import re
+import sys
+
+def insertionSort1(n, arr):
+    m = arr[n-1]
+    j = n-1
+    for i in range(n-2, -1, -1):
+        if m < arr[i]:
+            arr[j] = arr[i]
+            j = j-1
+            print(*arr)
+        else : 
+            break
+    arr[j] = m 
+    print(*arr) 
+         
+
+
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
+
+
+
+
+
+# Insertion Sort - Part 2
+
+
+import math
+import os
+import random
+import re
+import sys
+
+def insertionSort2(n, arr):
+    for i in range(1, len(arr)):
+        j = i   
+        while j>0:
+            if arr[j-1] > arr[j]:
+                x = arr[j-1]
+                arr[j-1] = arr[j]
+                arr[j] = x
+                j = j-1
+            else : 
+                break
+        print(*arr)
+
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort2(n, arr)
+
+
+
+
+
+
+# Recursive Digit Sum
+
+import math
+import os
+import random
+import re
+import sys
+
+def superDigit(n, k):
+    L = list(n)
+    if len(L) == 1: return int(L[0])
+    g = sum(map(int,L))
+    return superDigit (str(k*g),1)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = nk[0]
+
+    k = int(nk[1])
+
+    result = superDigit(n, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
     
 
