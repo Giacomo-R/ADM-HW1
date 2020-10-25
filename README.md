@@ -1,6 +1,6 @@
 # ADM-HW1
 
-## Scripts.py 
+## scripts.py 
 
 In this file there are the full codes of the scripts i made on HackerRank, named after the title used on the website. I made 88 out of 97 codes. 
 
