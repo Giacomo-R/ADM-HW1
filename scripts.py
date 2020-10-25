@@ -1851,4 +1851,25 @@ if __name__ == '__main__':
 
 
     
+    
+#Regex Substitution
+
+
+import re 
+
+n = int(input())
+
+for i in range(0,n):
+    txt= input()
+    if txt.find('#') < 0:
+        txt = re.sub (r'(?<!&{\s)(\s&{2}\s)(?!&{\s)', ' and ', txt)
+        txt = re.sub (r'(?<!&{\s)(\s&{2}\s)(?!&{\s)', ' and ', txt)         
+        txt = re.sub (r'(?<!\|{\s)(\s\|{2}\s)(?!\|{\s)', ' or ', txt)
+        txt = re.sub (r'(?<!\|{\s)(\s\|{2}\s)(?!\|{\s)', ' or ', txt)  
+        print(txt)
+    else : 
+        print(txt)
+    
+
+
 
